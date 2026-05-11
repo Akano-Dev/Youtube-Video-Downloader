@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-[#0f0f0f] text-white antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-[#1a1a1a];
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[#3a3a3a] rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[#4a4a4a];
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-[#1a1a1a] border border-[#2a2a2a] rounded-2xl;
+  }
+
+  .btn-primary {
+    @apply bg-red-600 hover:bg-red-500 active:bg-red-700 text-white font-semibold
+           px-6 py-3 rounded-xl transition-all duration-200 
+           disabled:opacity-50 disabled:cursor-not-allowed
+           flex items-center justify-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply bg-[#252525] hover:bg-[#2f2f2f] active:bg-[#1f1f1f] text-white font-medium
+           px-4 py-2 rounded-xl transition-all duration-200 border border-[#2a2a2a]
+           flex items-center justify-center gap-2;
+  }
+
+  .input-field {
+    @apply w-full bg-[#252525] border border-[#2a2a2a] rounded-xl px-4 py-3
+           text-white placeholder-gray-500 outline-none
+           focus:border-red-500 focus:ring-1 focus:ring-red-500/30
+           transition-all duration-200;
+  }
+
+  .format-btn {
+    @apply flex-1 py-3 px-4 rounded-xl font-medium text-sm transition-all duration-200
+           border cursor-pointer flex items-center justify-center gap-2;
+  }
+
+  .format-btn-active {
+    @apply bg-red-600/20 border-red-500 text-red-400;
+  }
+
+  .format-btn-inactive {
+    @apply bg-[#252525] border-[#2a2a2a] text-gray-400 hover:border-[#3a3a3a] hover:text-gray-300;
+  }
+
+  .quality-btn {
+    @apply py-2 px-4 rounded-lg font-medium text-sm transition-all duration-200
+           border cursor-pointer;
+  }
+
+  .quality-btn-active {
+    @apply bg-red-600/20 border-red-500 text-red-400;
+  }
+
+  .quality-btn-inactive {
+    @apply bg-[#252525] border-[#2a2a2a] text-gray-400 hover:border-[#3a3a3a] hover:text-gray-300;
+  }
+}
