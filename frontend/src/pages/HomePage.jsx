@@ -212,7 +212,7 @@ function extractErrorMessage(err) {
   }
   // Network error (backend not running)
   if (err?.code === 'ERR_NETWORK' || err?.message?.includes('Network Error')) {
-    return 'Cannot connect to backend. Make sure the server is running on port 5000.';
+    return 'Cannot connect to backend. The server may be starting up (Render free tier takes ~50s). Please try again.';
   }
   return err?.message || 'Something went wrong. Please try again.';
 }
