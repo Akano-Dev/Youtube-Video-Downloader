@@ -13,14 +13,21 @@ export default function UrlInput({ onSubmit, loading }) {
   function handleClear() {
     setUrl('');
   }
-
   function handlePaste(e) {
     // Auto-submit on paste if it looks like a YouTube URL
-    const pasted = e.clipboardData.getData('text').trim();
-    if (pasted.includes('youtube.com') || pasted.includes('youtu.be')) {
-      setUrl(pasted);
-      setTimeout(() => onSubmit(pasted), 50);
-    }
+    // Use setTimeout to let the input value update first
+    setTimeout(() => {
+      const pasted = e.target.value.trim();
+      if (pasted.includes('youtube.com') || pasted.includes('youtu.be')) {
+        // Clean up any duplicated URLs (e.g. if user pasted twice)
+        const cleaned = pasted.split('https://').filter(Boolean);
+        const finalUrl = cleaned.length > 1
+          ? 'https://' + cleaned[cleaned.length - 1]
+          : pasted;
+        setUrl(finalUrl);
+        onSubmit(finalUrl);
+      }
+    }, 10);
   }
 
   return (
